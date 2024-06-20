@@ -5,12 +5,16 @@
 arrayFunctions.pdf
 
 # exercises
-student_exercises/corrections/
-student_exercises/corrections/basics/
+student_exercises/corrections/basics/affichageNombres/
+student_exercises/corrections/basics/arithmetic/
+student_exercises/corrections/basics/maths/
+student_exercises/corrections/basics/strings/
+student_exercises/corrections/*.js
 student_exercises/corrections/advanced/
 student_exercises/corrections/DOM/
-student_exercises/implementations/advanced/
+
 student_exercises/implementations/DOM/
+student_exercises/implementations/terminal/
 
 # OSX file
 .DS_Store

@@ -166,22 +166,22 @@ describe('Maths', () => {
       expect(maths.estPremier(0)).toBe(false);
     });
     test('Nombre premier de 1', () => {
-      expect(maths.estPremier(0)).toBe(false);
+      expect(maths.estPremier(1)).toBe(false);
     });
     test('Nombre premier de 2', () => {
-      expect(maths.estPremier(0)).toBe(true);
+      expect(maths.estPremier(2)).toBe(true);
     });
     test('Nombre premier de 3', () => {
-      expect(maths.estPremier(0)).toBe(true);
+      expect(maths.estPremier(3)).toBe(true);
     });
     test('Nombre premier de 4', () => {
-      expect(maths.estPremier(0)).toBe(false);
+      expect(maths.estPremier(4)).toBe(false);
     });
     test('Nombre premier de 5', () => {
-      expect(maths.estPremier(0)).toBe(true);
+      expect(maths.estPremier(5)).toBe(true);
     });  
     test('Nombre premier de 6', () => {
-      expect(maths.estPremier(0)).toBe(false);
+      expect(maths.estPremier(6)).toBe(false);
     });  
   });
 });

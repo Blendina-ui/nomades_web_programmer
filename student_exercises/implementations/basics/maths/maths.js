@@ -107,6 +107,10 @@ function auCarre(n) {
  * estPremier(5) // true
  * estPremier(6) // false
  */
+function estPremier(n) {
+  // Ton implementation
+  return null
+}
 module.exports = {
 	estPair,
 	factorielle,
