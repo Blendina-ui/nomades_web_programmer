@@ -6,14 +6,18 @@ arrayFunctions.pdf
 
 # exercises
 student_exercises/corrections/basics/affichageNombres/
-student_exercises/corrections/basics/arithmetic/
-student_exercises/corrections/basics/maths/
-student_exercises/corrections/basics/strings/
 student_exercises/corrections/*.js
 student_exercises/corrections/advanced/
 student_exercises/corrections/DOM/
 
-student_exercises/implementations/DOM/
+student_exercises/implementations/DOM/calculatrice/
+student_exercises/implementations/DOM/carousel/
+student_exercises/implementations/DOM/chrono/
+student_exercises/implementations/DOM/click_count/
+student_exercises/implementations/DOM/snake/
+student_exercises/implementations/DOM/toDo_list/
+student_exercises/implementations/DOM/usersList/
+student_exercises/implementations/DOM/*.zip
 student_exercises/implementations/terminal/
 
 # OSX file

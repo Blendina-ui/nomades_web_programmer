@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "lfm.vscode-makefile-term",
-    "github.copilot"
+    "github.copilot",
+    "ritwickdey.LiveServer",
   ]
 }
