@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    div {
+      height: 100px;
+      width: 100px;
+    }
+
+    .purple {
+      background-color: purple;
+    }
+
+    .red {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="classInput" placeholder="class name"/>
+  <button id="classButton">Change class</button>
+  <div id="myDiv" class="purple">
+  </div>
+
+  <script>
+    const md = document.querySelector("#myDiv")
+    const clasInput = document.querySelector("#classInput")
+    const classBtn = document.getElementById("classButton")
+    //md.classList.remove("purple")
+    //md.classList.add("red")
+
+    //md.style.border = "solid 1px black"
+    //md.style.backgroundColor = "Transparent"
+
+    //md.innerText = "Hello World!"
+    //md.innerText += "\nhello JS class"
+
+    //md.innerHTML = "<h1>Hello world!</h1>"
+
+    /*classBtn.addEventListener("click", () => {
+      const classValue = clasInput.value
+      if(classValue !== "purple" && classValue !== "red"){
+        alert("Please enter: 'purple' ro 'red'")
+      } else {
+        md.classList.remove("purple")
+        md.classList.remove("red")
+  
+        md.classList.add(classValue)
+      }
+    })*/
+
+    classBtn.addEventListener("click", () => {
+      const bgcValue = clasInput.value
+        md.style.backgroundColor = bgcValue
+    })
+
+  </script>
+</body>
+</html>

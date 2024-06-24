@@ -1,5 +1,6 @@
 {
   "recommendations": [
-    "lfm.vscode-makefile-term"
+    "lfm.vscode-makefile-term",
+    "ritwickdey.LiveServer",
   ]
 }
