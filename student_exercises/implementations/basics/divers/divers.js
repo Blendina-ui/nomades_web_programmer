@@ -10,7 +10,11 @@
  */
 function estMajeur(age) { // Version 3
 	// Ton implementation
-	return null;
+	if(age >= 18){
+		return "Vous êtes majeur !"
+	}else{
+		return "Vous êtes mineur !"
+	}
 }
 
 module.exports = {

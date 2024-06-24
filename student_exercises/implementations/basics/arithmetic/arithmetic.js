@@ -10,7 +10,7 @@
  */
 function add(a, b) {
   // Ton implementation
-	return null;
+	return a+b;
 }
 
 /**
@@ -25,7 +25,7 @@ function add(a, b) {
  */
 function sub(a, b) {
   // Ton implementation
-	return null;
+	return a-b;
 }
 
 /**
@@ -41,7 +41,7 @@ function sub(a, b) {
  */
 function mul(a, b) {
   // Ton implementation
-	return null;
+	return a*b;
 }
 
 /**
@@ -61,7 +61,7 @@ function div(a, b) {
     throw new Error('Division par zero');
   }
   // Ton implementation
-	return null;
+	return a/b;
 }
 
 module.exports = {

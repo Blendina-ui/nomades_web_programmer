@@ -9,7 +9,7 @@
  * @see https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/trim
  */
 function compteMots(phrase) {
-  return null;
+  return phrase.trim().split(" ").length
 }
 /**
  * Retourne un string contentant les caractères de la phrase dans l'ordre inverse
@@ -21,7 +21,7 @@ function compteMots(phrase) {
  * @see https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/length
  */
 function inverser(mot) {
-	return null;
+	return mot.split("").reverse().join("")
 }
 
 /**
@@ -36,7 +36,7 @@ function inverser(mot) {
  */
 function estPalindrome(mot) {
 	// Ton implementation
-	return null;
+	return mot === inverser(mot)
 }
 
 /**
@@ -51,7 +51,7 @@ function estPalindrome(mot) {
  */
 function compteCaracteres(mot) {
 	// Ton implementation
-	return null;
+	return mot.length;
 }
 
 /**
@@ -65,7 +65,13 @@ function compteCaracteres(mot) {
  */
 function compterLesLettres(mot) {
 	// Ton implementation
-	return null;
+	let count = 0
+	for(let i=0; i<mot.length; i++){
+		if(mot[i].match(/[a-zA-Z]/)){
+			count++;
+		}
+	}
+	return count
 }
 
 /**
@@ -82,7 +88,14 @@ function compterLesLettres(mot) {
  */
 function compteVoyelles(mot) {
 	// Ton implementation
-	return null;
+	let number = 0
+	let voy = "aeuio"
+	for(const el of mot.toLowerCase()){
+		if(voy.includes(el)){
+			number++
+		}
+	}
+	return number
 }
 
 /**
@@ -98,7 +111,14 @@ function compteVoyelles(mot) {
  */
 function compteConsonnes(mot) {
 	// Ton implementation
-	return null;
+	let number = 0
+	let consonnes = "bcdfghjklmnpqrstvwxyz"
+	for(const el of mot.toLowerCase()){
+		if(consonnes.includes(el)){
+			number++
+		}
+	}
+	return number
 }
 
 /**
@@ -111,7 +131,8 @@ function compteConsonnes(mot) {
  */
 function concatenation(mot1, mot2) {
 	// Ton implementation
-	return null;
+	
+	return mot1 + mot2
 }
 
 module.exports = {

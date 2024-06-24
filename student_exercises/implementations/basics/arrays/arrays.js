@@ -37,8 +37,11 @@ function triDecroissant(tab) {
  * @see https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/for
  */
 function somme(tableau) {
-  // Ton implementation
-	return null;
+  let sum = 0;
+  for(let i=0; i < tableau.length; i++){
+	sum += tableau [i]
+  }
+	return sum;
 }
 
 /**
@@ -47,13 +50,18 @@ function somme(tableau) {
  * @returns {Float} la moyenne des éléments du tableau
  * @example
  * moyenne([1, 2, 3, 4, 5]) // 3
- * moyenne([1, 2, 3, 4, 5, 6]) // 3.5
+ * moyenne([1, 2, 3, 4]) // 3.5
  * moyenne([1, 1, 1, 1, 1, 1]) // 1
  * moyenne([1, 1, 1, 10, 10]) // 4.6
  * @see https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/parseFloat
  */
 function moyenne(tableau) {
-  return null
+	let sum = 0;
+	for (let i=0; i < tableau.length; i++){
+		sum += tableau [i];
+	}
+	const moyenne = sum / tableau.length;
+  return moyenne
 }
 
 /**
@@ -66,7 +74,13 @@ function moyenne(tableau) {
  */
 function min(tableau) {
   // Ton implementation
-	return null;
+  let min_ = tableau[0];
+  for(let i = 1; < tableau.length; i++){
+	if(tableau[i] < min_){
+		min_ = tableau[i];
+	}
+  }
+	return min_;
 }
 
 /**
@@ -79,7 +93,13 @@ function min(tableau) {
  */
 function max(tableau) {
   // Ton implementation
-	return null;
+  let max = tableau[0];
+  for(let i = 0; i < tableau.length; i++){
+	if(tableau[i] > max){
+		max = tableau[i];
+	}
+  }
+	return max;
 }
 
 /**
@@ -90,7 +110,18 @@ function max(tableau) {
  * minMax([1, 2, 3, 4, 5]) // [1, 5]
  */
 function minMax(tableau) {
-  return null
+	let max_ = tableau[0];
+	let min_ = tableau[0];
+	for(let i = 0; i < tableau.length; i++){
+		if(tableau[i] > max_){
+			max_ = tableau[i];
+		}
+		if(tableau[i] < min_){
+			min_ = tableau[i];
+		}
+	  }
+
+  return [min_,max_]
 }
 
 /**
@@ -157,9 +188,18 @@ function ecartType(tableau) {
  * existe([1, 2, 3], 4) // false
  */
 function existe(tableau, valeur) {
-  // Ton implementation
-	return null;
-}
+	// Ton implementation
+	 {
+	  for(let i=1; i<tableau.length; i++){
+		if(tableau[i] === valeur){
+			return true
+		}
+		} 
+	  }
+	return false
+  }
+	
+
 
 
 /**

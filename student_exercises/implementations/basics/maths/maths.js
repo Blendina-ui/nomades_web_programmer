@@ -8,7 +8,10 @@
  */
 function estPair(nombre) { // O(1)
   // Ton implementation
-	return null;
+	if( nombre%2 === 0){
+		return "Le nombre est pair"
+	}
+	return "Le nombre est impair"
 }
 
 /**
@@ -30,7 +33,10 @@ function estPair(nombre) { // O(1)
  */
 function factorielle(n) {
   // Ton implementation
-	return null;
+	if(n === 0 || n === 1){
+		return 1
+	}
+	return n * factorielle(n-1);
 }
 
 /**
@@ -52,8 +58,12 @@ function factorielle(n) {
  */
 function fibonacci(n) {
   // Ton implementation
-	return null;
-}
+	if (n === 0 || n === 1){
+		return n;
+	} 
+		return fibonacci(n-1) + fibonacci(n-2);
+	}
+
 /**
  * Somme des n premiers entiers
  * @param {Number} n le nombre d'entiers à additionner
@@ -69,7 +79,11 @@ function fibonacci(n) {
  * somme(50) // 1275
  */
 function somme(n) {
-  return null
+  let sum=0
+  for(let i=1; i<=n; i++){
+	sum += 1
+  }
+  return sum
 }
 
 /**
@@ -88,7 +102,7 @@ function somme(n) {
  */
 function auCarre(n) {
   // Ton implementation
-	return null;
+	return n*n
 }
 
 /**
@@ -108,13 +122,33 @@ function auCarre(n) {
  * estPremier(6) // false
  */
 function estPremier(n) {
-  // Ton implementation
-  return null
+	// Vérification des cas spéciaux
+	if (n < 2) return false;
+    for (let i = 2; i < Math.sqrt(n); i++) {
+        if (n % i === 0){
+            return false;
+		}
+	}
+    return true
+                    
+
+    
 }
+  
+  // Exemples d'utilisation
+  console.log(estPremier(0)); // false
+  console.log(estPremier(1)); // false
+  console.log(estPremier(2)); // true
+  console.log(estPremier(3)); // true
+  console.log(estPremier(4)); // false
+  console.log(estPremier(5)); // true
+  console.log(estPremier(6)); // false
+  
 module.exports = {
 	estPair,
 	factorielle,
 	fibonacci,
 	somme,
 	auCarre,
+	estPremier
 };

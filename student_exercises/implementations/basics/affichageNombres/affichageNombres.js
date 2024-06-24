@@ -4,8 +4,11 @@
  * @see https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/for
  */
 function afficherLesNombresDe1A10() { // Version 3
-	// Ton implementation
-	return null;
+	let result = ' ';
+	for(let i = 1; i <=10; i++){
+		result += i + ' ';
+	}
+	return result.trim();
 }
 
 /**
@@ -14,10 +17,14 @@ function afficherLesNombresDe1A10() { // Version 3
  * @see https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/for
  */
 function afficherLesNombresPairDe1a10() { // Version 3
-	// Ton implementation
-	return null;
+	let result = ' ';
+	for(let i = 1; i <= 10; i++){
+		if(i % 2 === 0){
+			result += i + ' ';
+		}
+	}
+	return result.trim();
 }
-
 /**
  * Afficher les nombres de 1 à n
  * @param {Number} n le nombre maximum
@@ -29,7 +36,11 @@ function afficherLesNombresPairDe1a10() { // Version 3
  */
 function afficherLesNombresDe1aN(n) {
 	// Ton implementation
-	return null;
+	let result = ' ';
+	for(let i = 1; i <= n; i++){
+		result += i + ' ';
+	}
+	return result.trim();
 }
 
 module.exports = {
