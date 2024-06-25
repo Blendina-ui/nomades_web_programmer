@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    fieldset {
+      max-width: 400px;;
+    }
+  </style>
+  <fieldset>
+    <legend>
+      <h1>Calculatrice</h1>
+    </legend>
+    <input type="number" name="champOne" id="champOne" placeholder="" title="champOne" value="">
+    <input type="number" name="champTwo" id="champTwo" placeholder="" title="champTwo">
+    <br/>
+    <button id="sum">+</button>
+    <button id="sub">-</button>
+    <button id="mul">*</button>
+    <button id="div">/</button>
+    <button onclick="reset()">reset</button>
+  
+    <p>Resultat: <span id="resultat"></span></p>
+  </fieldset>
+  <script>
+    /**
+      * Function that returns the numbers from the input fields 
+      * @returns {number[]} an array containing the numbers from the input fields
+      */
+    function getNumbers() {
+      const champ1 = Number(document.querySelector("#champOne").value) // Here the Number function transforms the string into a number, the strings come from the value field of the input type number
+      const champ2 = Number(document.querySelector("#champTwo").value)
+      return [champ1, champ2]
+    }
+
+    /**
+      * Function that displays the `result` provided by parameter in the span with id "resultat"
+      * @param {number} result the result to display
+      */
+    function displayResult(result) {
+      document.querySelector("#resultat").innerText = result
+    }
+    
+    // TODO: get the sum HTML elements using document.querySelector
+    // TODO: attach click event to the sum button using the `addEventListener` DOC: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+
+    // TODO: get the sub HTML elements using document.querySelector
+    // TODO: attach click event to the sub button using the `addEventListener` DOC: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+    
+    // TODO: get the mul HTML elements using document.querySelector
+    // TODO: attach click event to the mul button using the `addEventListener` DOC: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+
+    // TODO: get the div HTML elements using document.querySelector
+    // TODO: attach click event to the div button using the `addEventListener` DOC: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+    //       Be careful, you can't divide by 0, if the user tries to divide by 0, display an alert message "Division par zéro impossible" using alert() DOC: https://developer.mozilla.org/en-US/docs/Web/API/Window/alert
+
+    /**
+      * Function that resets the result and the input fields
+      */
+    const reset = () => {
+      // TODO: Empty the two inputs and the result
+    }
+  </script>
+</body>
+</html>
