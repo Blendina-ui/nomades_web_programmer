@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Title pricipal</h1>
+  <div id="myDiv">
+    <h1>Test DOM</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus dolores harum nemo eius natus, voluptas facilis architecto numquam, ullam recusandae libero totam optio molestias laboriosam ipsa suscipit dolorum adipisci? Rerum.</p>
+  </div>
+
+  <input type="text" id="tbx">
+  <button id="btn">+</button>
+  <ul id="todos"></ul>
+
+  <script>
+    const tbx = document.querySelector("#tbx")
+    const btn = document.querySelector("#btn")
+    const todos = document.querySelector("#todos")
+    const myDiv = document.querySelector("#myDiv")
+
+    for(let i=0; i<myDiv.children.length; i++){
+      myDiv.children[i].classList.add("active")
+    }
+    
+    btn.addEventListener("click", e => {
+      todoValue = tbx.value
+      
+      const li = document.createElement("li")
+      li.innerText = todoValue
+      
+      todos.appendChild(li)
+    })
+    
+    /*btn.addEventListener("contextmenu", () => {
+      document.querySelector("#myDiv").innerHTML += '<span style="color: white;">Hello World!</span>'
+      document.querySelector("#myDiv").removeChild(document.querySelector("p")) 
+      console.log(document.querySelector("h1").parentNode.children)
+    })*/
+
+    /*btn.addEventListener("click", e => {
+      todoValue = tbx.value
+
+      todos.innerHTML += `${todoValue}`
+    })*/
+  </script>
+</body>
+</html>
