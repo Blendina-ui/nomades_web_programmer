@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    fieldset {
+      max-width: 400px;;
+    }
+  </style>
+  <fieldset>
+    <legend>
+      <h1>Le Just Prix</h1>
+    </legend>
+    <p>Quel est le just prix?</p>
+    <input type="number" name="prix" id="prix" title="prix">
+    <button id="proposer" >proposer</button>
+    <button id="reset">reset</button>
+    <ul id="messages"></ul>
+  </fieldset>
+
+  <script>
+    const MAX_RANDOM_VALUE = 100
+    const PRIX = Math.floor(Math.random() * MAX_RANDOM_VALUE) + 1;
+    const optimalTries = Math.floor(Math.log2(MAX_RANDOM_VALUE))
+    const btnProposer = document.querySelector("#proposer")
+    const prixInput = document.querySelector("#prix")
+    const message = document.querySelector("#messages")
+    
+    let tries = 0
+
+    
+    
+    console.log('Juste Prix: ', PRIX);
+    const checkPrix = () => {
+      const valeurEntree = parseInt(prixInput.value)
+      //const valeurEntree = Number(prixInput.value)
+      tries++
+      if(valeurEntree === PRIX){
+        const champion = (tries <= optimalTries ? "champion" : "")
+        alert(`vous avez reussi en ${tries}`)
+        message.innerHTML = `<li>Bravo ${champion}!!!! </li>`
+        return;
+      }
+      
+      message.innerHTML += (valeurEntree < PRIX ? "<li>C'est plus ! </li>" : "<li>C'est moins ! </li>")
+    }
+
+    prixInput.addEventListener("keydown", (e) => {
+      console.log(e.target)
+      if(e.key === "Enter"){
+        checkPrix()
+      }
+    })
+    btnProposer.addEventListener("click", checkPrix)
+    document.querySelector("#reset").addEventListener("click", () => {
+      prixInput.value = ""
+    })    
+  </script>
+</body>
+</html>
