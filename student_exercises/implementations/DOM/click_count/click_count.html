@@ -9,9 +9,34 @@
   <div id="container">
     <p id="count">0</p>
     <button id="click_counter">Click</button>
-    <button id="click_reset">Reset</button>
+    <button id="click_reset" disabled >Reset</button>
   </div>
+
   <script>
+    const btnClick = document.querySelector("#click_counter")
+    const btnReset = document.querySelector("#click_reset")
+    const pCount = document.querySelector("#count")
+    let number = 0
+
+    
+
+    btnClick.addEventListener('click', () => {
+      number ++
+      pCount.innerHTML = number
+      if(number > 0){
+        btnReset.removeAttribute(`disabled`)
+      }else {
+        btnReset.setAttribute('disabled', 'disabled')
+      }
+    })
+    btnReset.addEventListener('click', () => {
+      number = 0
+      pCount.innerHTML = number
+      btnReset.setAttribute('disabled', 'disabled')
+    })
+    
+
+    
     // TODO: get the different HTML elements using document.querySelector
     // TODO: attach click event using the `addEventListener` DOC: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
     // TODO: When pressing the click button increment a counter, the counter starts at 0

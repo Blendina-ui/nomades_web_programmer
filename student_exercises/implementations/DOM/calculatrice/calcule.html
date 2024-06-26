@@ -23,7 +23,7 @@
     <button id="sub">-</button>
     <button id="mul">*</button>
     <button id="div">/</button>
-    <button onclick="reset()">reset</button>
+    <button id="reset"  onclick="reset()" >reset</button>
   
     <p>Resultat: <span id="resultat"></span></p>
   </fieldset>
@@ -45,26 +45,51 @@
     function displayResult(result) {
       document.querySelector("#resultat").innerText = result
     }
+
+    const btnSum = document.querySelector("#sum")
+    const btnSub = document.querySelector("#sub")
+    const btnMul = document.querySelector("#mul")
+    const btnDiv = document.querySelector("#div")
+    const champ1Input = document.querySelector("#champOne")
+    const champ2Input = document.querySelector("#champTwo")
+    const btnReset = document.querySelector("#reset")
+    const res = document.querySelector("#resultat")
     
-    // TODO: get the sum HTML elements using document.querySelector
-    // TODO: attach click event to the sum button using the `addEventListener` DOC: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
 
-    // TODO: get the sub HTML elements using document.querySelector
-    // TODO: attach click event to the sub button using the `addEventListener` DOC: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+    btnSum.addEventListener("click", () => {
+      const [champ1, champ2] = getNumbers()
+      displayResult(champ1 + champ2)
+    })
     
-    // TODO: get the mul HTML elements using document.querySelector
-    // TODO: attach click event to the mul button using the `addEventListener` DOC: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+    btnSub.addEventListener("click", () => {
+      const [champ1, champ2] = getNumbers()
+      displayResult(champ1 - champ2)
+    })
 
-    // TODO: get the div HTML elements using document.querySelector
-    // TODO: attach click event to the div button using the `addEventListener` DOC: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
-    //       Be careful, you can't divide by 0, if the user tries to divide by 0, display an alert message "Division par zéro impossible" using alert() DOC: https://developer.mozilla.org/en-US/docs/Web/API/Window/alert
+    btnMul.addEventListener("click", () => {
+      const [champ1, champ2] = getNumbers()
+      displayResult(champ1 * champ2)
+    })
 
-    /**
-      * Function that resets the result and the input fields
-      */
+    btnDiv.addEventListener("click", () => {
+      const [champ1, champ2] = getNumbers()
+      if (champ2 === 0) 
+        alert("Division par zéro impossible");
+      else {
+        displayResult(champ1 / champ2)
+      }
+    })
+    
     const reset = () => {
-      // TODO: Empty the two inputs and the result
+      champ1Input.value = ""
+      champ2Input.value = ""
+      res.innerText = "" // TODO: Empty the two inputs and the result 
     }
+    
+    
+  
+
+
   </script>
 </body>
 </html>
