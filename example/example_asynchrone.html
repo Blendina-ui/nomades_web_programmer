@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="stopInterval">Stop Interval</button>
+  <script>
+    /*const a = 10
+
+    for(let i=0; i<a; i++){
+      console.log(i)
+    }
+    
+    const tValue = setTimeout(() => {
+      console.log(0)
+    }, 10000)
+    const tValue2 = setTimeout(() => {
+      console.log(100)
+    }, 10000)
+
+    clearTimeout(tValue2)
+
+    console.log(tValue, tValue2)
+
+    console.log("Antonio")*/
+    let count = 0
+    const iValue = setInterval(() => {console.log(++count)}, 100)
+    document.querySelector("#stopInterval").addEventListener("click", () => {
+      clearInterval(iValue)
+    })
+
+  </script>
+</body>
+</html>
