@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    fieldset {
+      max-width: 400px;;
+    }
+  </style>
+  <fieldset>
+    <legend>
+      <h1>Calculatrice</h1>
+    </legend>
+    <input type="number" name="champOne" id="champOne" placeholder="" title="champOne" value="">
+    <input type="number" name="champTwo" id="champTwo" placeholder="" title="champTwo">
+    <br/>
+    <button id="sum" class="operator">+</button>
+    <button id="sub" class="operator">-</button>
+    <button id="mul" class="operator">*</button>
+    <button id="div" class="operator">/</button>
+    <button id ="reset" disabled>reset</button>
+  
+    <p>Resultat: <span id="resultat"></span></p>
+  </fieldset>
+  <script>
+    /**
+      * Function that returns the numbers from the input fields 
+      * @returns {number[]} an array containing the numbers from the input fields
+      */
+    function getNumbers() {
+      const champ1 = Number(document.querySelector("#champOne").value) // Here the Number function transforms the string into a number, the strings come from the value field of the input type number
+      const champ2 = Number(document.querySelector("#champTwo").value)
+      return [champ1, champ2]
+    }
+
+    /**
+      * Function that displays the `result` provided by parameter in the span with id "resultat"
+      * @param {number} result the result to display
+      */
+    function displayResult(result) {
+      document.querySelector("#resultat").innerText = result
+    }
+    const btnSum = document.querySelector("#sum")
+    const btnSub = document.querySelector("#sub")
+    const btnMul = document.querySelector("#mul") 
+    const btnDiv = document.querySelector("#div")
+    const champ1Input = document.querySelector("#champOne")
+    const champ2Input = document.querySelector("#champTwo")  
+    const btnReset = document.querySelector("#reset")
+    const res = document.querySelector("#resultat")
+
+    const btnClick = e => {
+      const operator = e.target.innerText
+      const [c1, c2] = getNumbers()
+
+      if(operator === "/" && c2 === 0){
+        alert("Division par zéro impossible")
+        return;
+      }
+
+      displayResult(eval(`${c1} ${operator} ${c2}`))
+    }
+
+    document.querySelectorAll(".operator").forEach(btn => btn.addEventListener("click", btnClick))
+
+
+    /*btnSum.addEventListener("click", () => {
+      const [c1, c2] = getNumbers()
+      displayResult(c1 + c2)
+    })
+    btnSub.addEventListener("click", () => {
+      const [champ1, champ2] = getNumbers()
+      displayResult(champ1 - champ2)
+    })
+    btnMul.addEventListener("click", () => {
+      const [champ1, champ2] = getNumbers()
+      displayResult(champ1 * champ2)
+    })
+    btnDiv.addEventListener("click", () => {
+      const [champ1, champ2] = getNumbers()
+      if(champ2 === 0){
+        alert("Division par zéro impossible")
+      } else{
+        displayResult(champ1/champ2)
+      }
+    })*/
+
+   /*
+   const body = document.querySelector("fieldset")
+   body.addEventListener("click", e => {
+    const inputs = document.querySelectorAll("input")
+    const n1 = Number(inputs[0].value)
+    const n2 = Number(inputs[1].value)
+
+    let ress = ""
+    switch(e.target.innerText) {
+      case "+":
+        ress = n1+n2
+        break
+      case "-":
+        ress = n1-n2
+        break
+      case "*":
+        ress = n1*n2
+        break
+      case "/":
+        if(n2 === 0){
+          alert("Division par zéro impossible")
+          return;
+        } 
+        ress = n1/n2
+        break
+      case "reset":
+        inputs.forEach(input => input.value = "")
+        res.innerText = ""
+        return;
+      default:
+        return;
+    }
+    res.innerText = `The result is ${ress}`
+   })
+    */
+
+   function enableReset() {
+    btnReset.disabled = !(champ1Input.value !== "" || champ2Input.value !== "" || res.innerText !== "")
+   }
+
+   champ1Input.addEventListener("keyup", enableReset)
+   champ2Input.addEventListener("keyup", enableReset)
+
+    /**
+      * Function that resets the result and the input fields
+      */
+    const reset = () => {
+      // TODO: Empty the two inputs and the result
+      champ1Input.value = ""
+      champ2Input.value = ""
+      res.innerHTML = ""
+      btnReset.disabled = true
+    }
+
+    btnReset.addEventListener("click", reset)
+  </script>
+</body>
+</html>

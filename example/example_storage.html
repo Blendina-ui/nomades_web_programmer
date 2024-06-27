@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1 id="h1_name"></h1>
+  <ul id="names"></ul>
+  <input type="text" id="tbxName">
+  <button id="addNameStorage">Save name in storage</button>
+  <button id="btn_clear">Clear local storage</button>
+  <script>
+
+    let names = []
+    const ulNames = document.querySelector("#names")
+    const displayName = (names) => {
+      ulNames.textContent = ""
+      names.forEach(name => {
+        const li = document.createElement("li")
+        li.textContent = name
+        ulNames.appendChild(li)
+      })
+
+      /*const liNames = names.map(name => {
+        const li = document.createElement("li")
+        li.textContent = name
+        return li
+      })
+
+      ulNames.append(liNames)*/
+
+
+    }
+    const namesLocalStorage = sessionStorage.getItem("names")
+    console.log("names", namesLocalStorage)
+
+    if(namesLocalStorage) {
+      names = JSON.parse(namesLocalStorage)
+      displayName(names)
+    }
+
+    document.querySelector("#addNameStorage").addEventListener("click", () => {
+      const nameInput = document.querySelector("#tbxName").value
+      names.push(nameInput)
+      displayName(names)
+      sessionStorage.setItem("names", JSON.stringify(names))
+    })
+    document.querySelector("#btn_clear").addEventListener("click", () => {
+      //sessionStorage.removeItem("name")
+      sessionStorage.clear()
+    })
+  </script>
+</body>
+</html>
