@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="./style.css">
+    <title>User List</title>
+
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        margin: 0;
+      }
+      .navbar {
+        flex: 0 0 auto; /* This will prevent the navbar from growing and shrinking */
+      }
+      #row-container {
+        flex: 1 0 auto; /* This will allow the map container to grow and shrink */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+      #map {
+        width: 100%;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="./userslist.html">Users <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="./map.html">Map</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="user-search-map">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="button" id="user-search-btn-map">Search</button>
+        </form>
+      </div>
+    </nav>
+    <div class="">
+      <div class="row">
+        <div class="col-12" id="row-container">
+          <div id="map"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- Leaflet Map -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- Custom scripts -->
+    <script src="./users.js"></script>
+    <script src="./userlist.js"></script>
+    <!-- <script src="./userslist.obfuscated.js"></script> -->
+    <script defer>
+      const _0x5037af=_0x1e31;function _0x4c75(){const _0x20d190=['Map\x20data\x20&copy;\x20<a\x20href=\x22https://www.openstreetmap.org/\x22>OpenStreetMap</a>\x20contributors','city','map','log','value','35960NbIGgs','28nyITKE','938166RorOdS','lng','134evqZqc','2538651HGbWPQ','tileLayer','click','setView','375UmkNXf','https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png','312130tuKyPR','geo','bindPopup','968XnlOpH','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3>','fitBounds','15895oFeGxj','address','</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>','marker','querySelector','lat','</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>','143POCGGv','zipcode','addTo','28472376rhtwto','forEach','12429xqJljH'];_0x4c75=function(){return _0x20d190;};return _0x4c75();}(function(_0x23c83a,_0x20b90d){const _0x1d6e26=_0x1e31,_0x4a33a9=_0x23c83a();while(!![]){try{const _0x315f8a=-parseInt(_0x1d6e26(0x191))/0x1*(parseInt(_0x1d6e26(0x184))/0x2)+-parseInt(_0x1d6e26(0x185))/0x3+-parseInt(_0x1d6e26(0x1a3))/0x4*(parseInt(_0x1d6e26(0x189))/0x5)+-parseInt(_0x1d6e26(0x1a5))/0x6*(-parseInt(_0x1d6e26(0x1a4))/0x7)+-parseInt(_0x1d6e26(0x18e))/0x8*(parseInt(_0x1d6e26(0x19d))/0x9)+parseInt(_0x1d6e26(0x18b))/0xa*(parseInt(_0x1d6e26(0x198))/0xb)+parseInt(_0x1d6e26(0x19b))/0xc;if(_0x315f8a===_0x20b90d)break;else _0x4a33a9['push'](_0x4a33a9['shift']());}catch(_0x37f112){_0x4a33a9['push'](_0x4a33a9['shift']());}}}(_0x4c75,0x9f072));const map=L[_0x5037af(0x1a0)](_0x5037af(0x1a0))[_0x5037af(0x188)]([48.8534,2.3488],0xd),tileLayer=L[_0x5037af(0x186)](_0x5037af(0x18a),{'attribution':_0x5037af(0x19e),'maxZoom':0x12});function _0x1e31(_0x1eea44,_0x313a7f){const _0x4c75f2=_0x4c75();return _0x1e31=function(_0x1e3140,_0x4285ba){_0x1e3140=_0x1e3140-0x184;let _0x199bba=_0x4c75f2[_0x1e3140];return _0x199bba;},_0x1e31(_0x1eea44,_0x313a7f);}tileLayer[_0x5037af(0x19a)](map);const createMarkers=_0x1a66e2=>{return _0x1a66e2['map'](_0x18faff=>{const _0x3a0728=_0x1e31,_0x35dfb0=L[_0x3a0728(0x194)]([_0x18faff[_0x3a0728(0x192)][_0x3a0728(0x18c)][_0x3a0728(0x196)],_0x18faff['address'][_0x3a0728(0x18c)][_0x3a0728(0x1a6)]]);return _0x35dfb0[_0x3a0728(0x18d)](_0x3a0728(0x18f)+getUserFullName(_0x18faff)+_0x3a0728(0x193)+_0x18faff[_0x3a0728(0x192)]['street']+',\x20'+_0x18faff[_0x3a0728(0x192)]['suite']+_0x3a0728(0x197)+_0x18faff[_0x3a0728(0x192)][_0x3a0728(0x19f)]+',\x20'+_0x18faff[_0x3a0728(0x192)][_0x3a0728(0x199)]+'</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20'),_0x35dfb0;});},addMarkersToMap=(_0x5a222f,_0x270511)=>{const _0x5671eb=_0x5037af;_0x270511[_0x5671eb(0x19c)](_0x1cc3cf=>_0x1cc3cf[_0x5671eb(0x19a)](_0x5a222f));},fitMapBounds=(_0x10a2e3,_0x5a5456)=>{const _0x596b23=_0x5037af,_0x518b21=_0x5a5456[_0x596b23(0x1a0)](_0x460ccb=>_0x460ccb['getLatLng']());_0x10a2e3[_0x596b23(0x190)](_0x518b21);},USER_SEARCH_MAP=document['querySelector']('#user-search-map'),USER_SEARCH_BTN_MAP=document[_0x5037af(0x195)]('#user-search-btn-map');let markers=createMarkers(USERS);addMarkersToMap(map,markers),fitMapBounds(map,markers),console[_0x5037af(0x1a1)](markers),USER_SEARCH_BTN_MAP['addEventListener'](_0x5037af(0x187),_0x439939=>{const _0x5710d7=_0x5037af,_0x18904d=USER_SEARCH_MAP[_0x5710d7(0x1a2)]['toLowerCase']();console[_0x5710d7(0x1a1)](markers);const _0x5aa02e=search(_0x18904d);console[_0x5710d7(0x1a1)](_0x5aa02e),markers[_0x5710d7(0x19c)](_0x35831c=>_0x35831c['removeFrom'](map)),markers=createMarkers(_0x5aa02e),addMarkersToMap(map,markers),fitMapBounds(map,markers);});
+    </script>
+  </body>
+</html>
