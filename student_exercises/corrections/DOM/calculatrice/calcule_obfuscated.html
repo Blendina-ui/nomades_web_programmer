@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    fieldset {
+      max-width: 400px;;
+    }
+  </style>
+  <fieldset>
+    <legend>
+      <h1>Calculatrice</h1>
+    </legend>
+    <input type="number" name="champOne" id="champOne" placeholder="" title="champOne" value="">
+    <input type="number" name="champTwo" id="champTwo" placeholder="" title="champTwo">
+    <br/>
+    <button id="sum">+</button>
+    <button id="sub">-</button>
+    <button id="mul">*</button>
+    <button id="div">/</button>
+    <button onclick="reset()">reset</button>
+  
+    <p>Resultat: <span id="resultat"></span></p>
+  </fieldset>
+  <script>
+    const _0x86a17b=_0xa1a7;(function(_0x3f4d68,_0x5c7a5f){const _0x2e9e93=_0xa1a7,_0x21df23=_0x3f4d68();while(!![]){try{const _0x4231ea=-parseInt(_0x2e9e93(0xbf))/0x1*(-parseInt(_0x2e9e93(0xb8))/0x2)+-parseInt(_0x2e9e93(0xb0))/0x3+parseInt(_0x2e9e93(0xb2))/0x4*(parseInt(_0x2e9e93(0xb6))/0x5)+parseInt(_0x2e9e93(0xaf))/0x6*(parseInt(_0x2e9e93(0xc3))/0x7)+parseInt(_0x2e9e93(0xba))/0x8*(-parseInt(_0x2e9e93(0xb4))/0x9)+parseInt(_0x2e9e93(0xb9))/0xa+parseInt(_0x2e9e93(0xbb))/0xb*(parseInt(_0x2e9e93(0xb5))/0xc);if(_0x4231ea===_0x5c7a5f)break;else _0x21df23['push'](_0x21df23['shift']());}catch(_0x31dea7){_0x21df23['push'](_0x21df23['shift']());}}}(_0x5bcd,0xcb096));function _0xa1a7(_0x130c16,_0x2ee7dc){const _0x5bcd4a=_0x5bcd();return _0xa1a7=function(_0xa1a762,_0x4fc92c){_0xa1a762=_0xa1a762-0xae;let _0x51076f=_0x5bcd4a[_0xa1a762];return _0x51076f;},_0xa1a7(_0x130c16,_0x2ee7dc);}function getNumbers(){const _0x290484=_0xa1a7,_0x4ebe76=Number(document[_0x290484(0xb3)](_0x290484(0xb7))[_0x290484(0xbd)]),_0x5e20be=Number(document[_0x290484(0xb3)](_0x290484(0xc1))['value']);return[_0x4ebe76,_0x5e20be];}function displayResult(_0x5da1b0){const _0x3cd538=_0xa1a7;document[_0x3cd538(0xb3)](_0x3cd538(0xb1))['innerText']=_0x5da1b0;}function _0x5bcd(){const _0x565572=['91ZRJdiS','innerHTML','addEventListener','#sum','#sub','406446emtIRe','3509952ywIDHa','#resultat','8iSATiP','querySelector','8635617MAIceu','203124HboViH','2274515pGOfxS','#champOne','2krGAJx','3149240gHoEbO','8VKVCAF','253dJguYO','#mul','value','#div','466451jvBEAO','click','#champTwo','Division\x20par\x20zéro\x20impossible'];_0x5bcd=function(){return _0x565572;};return _0x5bcd();}document[_0x86a17b(0xb3)](_0x86a17b(0xc6))['addEventListener'](_0x86a17b(0xc0),_0x79e97a=>{const _0x1979bb=getNumbers();displayResult(_0x1979bb[0x0]+_0x1979bb[0x1]);}),document[_0x86a17b(0xb3)](_0x86a17b(0xae))[_0x86a17b(0xc5)]('click',_0x2219cb=>{const _0x54e4f2=getNumbers();displayResult(_0x54e4f2[0x0]-_0x54e4f2[0x1]);}),document['querySelector'](_0x86a17b(0xbc))['addEventListener'](_0x86a17b(0xc0),_0x30d4de=>{const _0x3bf3d8=getNumbers();displayResult(_0x3bf3d8[0x0]*_0x3bf3d8[0x1]);}),document['querySelector'](_0x86a17b(0xbe))[_0x86a17b(0xc5)](_0x86a17b(0xc0),_0x10fc68=>{const _0x268d2e=_0x86a17b,_0x31edc9=getNumbers();if(_0x31edc9[0x1]!==0x0)displayResult(_0x31edc9[0x0]/_0x31edc9[0x1]);else alert(_0x268d2e(0xc2));});const reset=()=>{const _0x5507ad=_0x86a17b;document[_0x5507ad(0xb3)]('#resultat')[_0x5507ad(0xc4)]='',document['querySelector']('#champOne')[_0x5507ad(0xbd)]='',document[_0x5507ad(0xb3)](_0x5507ad(0xc1))['value']='';};
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="container">
+    <p id="count">0</p>
+    <button id="click_counter">Click</button>
+    <button id="click_reset" disabled>Reset</button>
+  </div>
+  <script>
+    const countContent = document.querySelector("#count")
+    const btCounter = document.querySelector("#click_counter")
+    const btReset = document.querySelector("#click_reset")
+
+    let counter = 0
+
+    function displayCounter() {
+      countContent.innerText = counter
+    }
+    function countPlus () {
+      counter++
+      displayCounter()
+      btReset.disabled = !(counter > 0)
+    }
+
+    function resetButton (){
+      counter = 0
+      displayCounter()
+      btReset.disabled = true 
+    } 
+
+    btCounter.addEventListener("click", countPlus)
+    btReset.addEventListener("click", resetButton)
+  </script>
+</body>
+</html>
