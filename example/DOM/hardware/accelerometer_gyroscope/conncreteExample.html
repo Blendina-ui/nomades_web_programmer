@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Accelerometer and Gyroscope Example</title>
+    <style>
+      #acceleration {
+        font-size: 24px;
+        margin-top: 40px;
+      }
+      #rotation {
+        font-size: 24px;
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Accelerometer and Gyroscope Example</h1>
+    <p id="acceleration">Acceleration:</p>
+    <p id="rotation">Rotation:</p>
+    <script>
+      window.addEventListener("devicemotion", event => {
+        const acceleration = event.acceleration;
+        const rotationRate = event.rotationRate;
+        const accelerationElement = document.getElementById("acceleration");
+        const rotationElement = document.getElementById("rotation");
+        if (acceleration) {
+          const accelerationString = `X: ${acceleration.x.toFixed(2)}, Y: ${acceleration.y.toFixed(2)}, Z: ${acceleration.z.toFixed(2)}`;
+          accelerationElement.textContent = `Acceleration: ${accelerationString}`;
+        }
+        if (rotationRate) {
+          const rotationString = `Alpha: ${rotationRate.alpha.toFixed(2)}, Beta: ${rotationRate.beta.toFixed(2)}, Gamma: ${rotationRate.gamma.toFixed(2)}`;
+          rotationElement.textContent = `Rotation: ${rotationString}`;
+        }
+      });
+    </script>
+  </body>
+</html>

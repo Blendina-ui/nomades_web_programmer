@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Webcam and Microphone Selection Example</title>
+  </head>
+  <body>
+    <h1>Webcam and Microphone Selection Example</h1>
+    <h2>Select a webcam:</h2>
+    <select id="webcamList"></select>
+    <h2>Select a microphone:</h2>
+    <select id="micList"></select>
+    <br><br>
+    <button id="startButton">Start</button>
+    <button id="stopButton" disabled>Stop</button>
+    <br><br>
+    <video id="videoElement" width="640" height="480" autoplay></video>
+    <script>
+      const videoElement = document.getElementById('videoElement');
+      const webcamList = document.getElementById('webcamList');
+      const micList = document.getElementById('micList');
+      const startButton = document.getElementById('startButton');
+      const stopButton = document.getElementById('stopButton');
+      let mediaStream;
+
+      navigator.mediaDevices.enumerateDevices()
+        .then((devices) => {
+          console.log(devices);
+          devices.forEach((device) => {
+            if (device.kind === 'videoinput') {
+              const option = document.createElement('option');
+              option.value = device.deviceId;
+              option.text = device.label || `Camera ${webcamList.length + 1}`;
+              webcamList.appendChild(option);
+            } else if (device.kind === 'audioinput') {
+              const option = document.createElement('option');
+              option.value = device.deviceId;
+              option.text = device.label || `Microphone ${micList.length + 1}`;
+              micList.appendChild(option);
+            }
+          });
+        })
+        .catch((err) => {
+          console.error('Error occurred while enumerating devices:', err);
+        });
+
+      startButton.addEventListener('click', () => {
+        const constraints = {
+          video: {
+            deviceId: { exact: webcamList.value }
+          },
+          audio: {
+            deviceId: { exact: micList.value }
+          }
+        };
+
+        navigator.mediaDevices.getUserMedia(constraints)
+          .then((stream) => {
+            mediaStream = stream;
+            videoElement.srcObject = stream;
+            startButton.disabled = true;
+            stopButton.disabled = false;
+          })
+          .catch((err) => {
+            console.error('Error occurred while getting user media:', err);
+          });
+      });
+
+      stopButton.addEventListener('click', () => {
+        mediaStream.getTracks().forEach((track) => {
+          track.stop();
+        });
+        videoElement.srcObject = null;
+        startButton.disabled = false;
+        stopButton.disabled = true;
+      });
+    </script>
+  </body>
+</html>

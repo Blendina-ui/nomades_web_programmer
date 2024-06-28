@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Webcam and Microphone Example</title>
+  </head>
+  <body>
+    <h1>Webcam and Microphone Example</h1>
+    <video id="videoElement" autoplay></video>
+    <div>
+      <button id="startButton">Start Recording</button>
+      <button id="stopButton" disabled>Stop Recording</button>
+    </div>
+    <script>
+      const videoElement = document.getElementById("videoElement");
+      const startButton = document.getElementById("startButton");
+      const stopButton = document.getElementById("stopButton");
+      let mediaStream = null;
+      
+      function startRecording() {
+        navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+          .then(stream => {
+            console.log(stream)
+            mediaStream = stream;
+            console.log(mediaStream.getVideoTracks())
+            videoElement.srcObject = stream;
+            startButton.disabled = true;
+            stopButton.disabled = false;
+          })
+          .catch(error => {
+            console.error("Error accessing webcam/microphone:", error);
+          });
+      }
+      
+      function stopRecording() {
+        if (mediaStream) {
+          mediaStream.getTracks().forEach(track => track.stop());
+          mediaStream = null;
+          videoElement.srcObject = null;
+          startButton.disabled = false;
+          stopButton.disabled = true;
+        }
+      }
+      
+      startButton.addEventListener("click", startRecording);
+      stopButton.addEventListener("click", stopRecording);
+    </script>
+  </body>
+</html>
