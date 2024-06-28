@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="location"></p>
+  <script>
+    function showLocation(position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      document.getElementById("location").textContent = `Latitude: ${latitude}, Longitude: ${longitude}`;
+    }
+    
+    function showError(error) {
+      document.getElementById("location").textContent = `Error: ${error.message}`;
+    }
+    
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showLocation, showError);
+    } else {
+      document.getElementById("location").textContent = "Geolocation is not supported by this browser.";
+    }
+  </script>
+</body>
+</html>

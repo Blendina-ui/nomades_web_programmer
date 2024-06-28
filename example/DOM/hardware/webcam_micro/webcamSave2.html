@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Webcam Recording Example</title>
+</head>
+<body>
+  <h1>Webcam Recording Example</h1>
+  <video id="videoElement" width="640" height="480" autoplay></video>
+  <br>
+  <button id="recordButton">Record</button>
+  <button id="stopButton">Stop</button>
+  <button id="downloadButton">Download</button>
+  <script>
+    let mediaRecorder;
+    let recordedBlobs;
+    const videoElement = document.getElementById('videoElement');
+    const recordButton = document.getElementById('recordButton');
+    const stopButton = document.getElementById('stopButton');
+    const downloadButton = document.getElementById('downloadButton');
+
+    recordButton.addEventListener('click', () => {
+      recordedBlobs = [];
+      const options = { mimeType: 'video/webm;codecs=vp9' };
+      try {
+        mediaRecorder = new MediaRecorder(window.stream, options);
+      } catch (e) {
+        console.error('Exception while creating MediaRecorder:', e);
+        return;
+      }
+
+      mediaRecorder.onstop = (event) => {
+        console.log('Recorder stopped: ', event);
+      };
+      mediaRecorder.ondataavailable = handleDataAvailable;
+      mediaRecorder.start();
+      console.log('MediaRecorder started', mediaRecorder);
+      recordButton.disabled = true;
+      stopButton.disabled = false;
+    });
+
+    stopButton.addEventListener('click', () => {
+      mediaRecorder.stop();
+      console.log('Recorded Blobs: ', recordedBlobs);
+      recordButton.disabled = false;
+      stopButton.disabled = true;
+    });
+
+    downloadButton.addEventListener('click', () => {
+      const blob = new Blob(recordedBlobs, { type: 'video/webm' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      document.body.appendChild(a);
+      a.style = 'display: none';
+      a.href = url;
+      a.download = 'captured-video.webm';
+      a.click();
+      setTimeout(() => {
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+      }, 100);
+    });
+
+    function handleDataAvailable(event) {
+      console.log('Data available:', event);
+      if (event.data && event.data.size > 0) {
+        recordedBlobs.push(event.data);
+      }
+       // send blob to server using AJAX or fetch
+      if (event.data && event.data.size > 0) {
+        recordedBlobs.push(event.data);
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/upload', true);
+        xhr.setRequestHeader('Content-Type', 'video/webm');
+        xhr.onload = function(e) {
+          console.log('Video frame uploaded to server');
+        };
+        xhr.send(event.data);
+      }
+    }
+
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+        .then((stream) => {
+            window.stream = stream;
+            videoElement.srcObject = stream;
+        })
+        .catch((err) => {
+            console.log('navigator.getUserMedia error: ', err);
+        });
+  </script>
+</body>
+</html>

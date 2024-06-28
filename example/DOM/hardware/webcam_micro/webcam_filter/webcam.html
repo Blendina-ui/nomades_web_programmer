@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Webcam Effects</title>
+  <link rel="stylesheet" href="webcam.css">
+</head>
+<body>
+  <canvas id="myCanvas" onclick="nextEffect()"></canvas>
+  <pre id="overlay" onclick="removeOverlay()">
+<b>Webcam Effects on the HTML Canvas</b>
+
+We learned:
+- How to access the camera stream
+* Promises but
+* Async / await seems also possible
+- How to handle errors
+- How to crop the image to a square
+- How to scale the image to the canvas
+- How to manipulate the pixels
+* Grayscale
+* Invert
+* Symmetry
+* Mirror
+* Average (?) Symmetry
+* Stacking (Invert + Symmetry)
+
+<font color="orange">Full course <a target="_blank" href="https://www.youtube.com/playlist?list=PLB0Tybl0UNfb3hTHPfEIg1SPw_-Ca9iIw">here</a> on YouTube (ongoing).</font>
+
+  </pre>
+  <script defer src="webcam.js"></script>
+  <p>Source : <a></a></p>
+</body>
+</html>
