@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // callback hell example
+
+    /*setTimeout(() => {
+      console.log(3)
+      setTimeout(() => {
+        console.log(2)
+        setTimeout(() => {
+          console.log(1)
+          setTimeout(() => {
+            console.log("Redirected")
+          }, 1000) 
+        }, 1000)
+      }, 1000)
+    }, 1000)*/
+
+    function wait(duration) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve(duration)
+        }, duration)
+      })
+    }
+
+    function waitFail(duration) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          reject("Big error", duration)
+        }, duration)
+      })
+    }
+
+    /*wait(1000)
+      .then(_ => {
+        console.log(3)
+        return waitFail(1000)
+      })
+      .then(_ => {
+        console.log(2)
+        return wait(1000)
+      })
+      .then(_ => {
+        console.log(1)
+        return waitFail(1000)
+      })
+      .then(_ => {
+        console.log("Redirected")
+      })
+      .catch(err => {
+        console.log("some error")
+        return wait(1000)
+        })
+        .finally()*/
+          
+      async function main() {
+          console.log(3)
+          wait(1000).then(_ => console.log("coucou"))
+          console.log(2)
+          wait(2000).then(_ => console.log("coucou2"))
+          console.log(1)
+          wait(1000).then(_ => console.log("coucou3"))
+          console.log("Redirected")
+      }
+
+      main()
+  </script>
+</body>
+</html>
