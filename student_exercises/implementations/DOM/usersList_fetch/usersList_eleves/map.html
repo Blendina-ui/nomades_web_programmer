@@ -10,6 +10,29 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <link rel="stylesheet" href="./style.css">
     <title>User List</title>
+
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        margin: 0;
+      }
+      .navbar {
+        flex: 0 0 auto; /* This will prevent the navbar from growing and shrinking */
+      }
+      #row-container {
+        flex: 1 0 auto; /* This will allow the map container to grow and shrink */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+      #map {
+        width: 100%;
+        height: 100vh;
+      }
+    </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -19,29 +42,23 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Users <span class="sr-only">(current)</span></a>
-          </li>
           <li class="nav-item">
+            <a class="nav-link" href="./userslist.html">Users <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
             <a class="nav-link" href="./map.html">Map</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="user-search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="button" id="user-search-btn">Search</button>
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="user-search-map">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="button" id="user-search-btn-map">Search</button>
         </form>
       </div>
     </nav>
-    <div class="container">
+    <div class="">
       <div class="row">
         <div class="col-12" id="row-container">
-          <div class="row">
-            <div class="col-12">
-              <h1>Users</h1>
-            </div>
-          </div>
-          <div class="row g-2" id="row-users">
-          </div>
+          <div id="map"></div>
         </div>
       </div>
     </div>
@@ -56,16 +73,9 @@
     <script src="./users.js"></script>
     <script src="./userlist.js"></script>
     <!-- <script src="../userlist_example/userslist.js"></script> -->
+
     <script defer>
-      // TODO: your implementation
-      const USERS = []
-      fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(json => {
-        USERS = json
-        displayUsers(USERS)
-      })
-      
+      // TODO: Map implementation
     </script>
   </body>
 </html>

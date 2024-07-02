@@ -38,7 +38,9 @@
       })
     }
 
-    /*wait(1000)
+    /*
+    loadding = true
+    wait(1000)
       .then(_ => {
         console.log(3)
         return waitFail(1000)
@@ -57,20 +59,73 @@
       .catch(err => {
         console.log("some error")
         return wait(1000)
-        })
-        .finally()*/
+      })
+      .finally(_ => {
+        loadding = false
+      })*/
           
-      async function main() {
-          console.log(3)
-          wait(1000).then(_ => console.log("coucou"))
-          console.log(2)
-          wait(2000).then(_ => console.log("coucou2"))
-          console.log(1)
-          wait(1000).then(_ => console.log("coucou3"))
-          console.log("Redirected")
+      /*async function main() {
+        console.log(3)
+        await wait(1000)
+        console.log(2)
+        await wait(2000)
+        console.log(1)
+        await wait(1000)
+        console.log("Redirected")
       }
+      main()*/
+      /*
+      const a = 10
+      const b = 0
+      //try {
+        const c = a/b
+        throw Error("Division by 0")        
+      //} catch {
+        console.log("Error occured")
+      //}
+      console.log(c)
+      console.log("Hello World!")
+      */
 
-      main()
+      // Promise.all runs all the promises in parallel and returns an array of results
+      // if there is an error in any of the promises, the catch block will be executed
+      /*Promise.all([wait(1000), wait(2000)])
+        .then(durations => console.log(durations))*/
+      
+      /*Promise.all([waitFail(1000), wait(2000)])
+        .then(durations => console.log(durations))
+        .catch(e => console.error(e))*/
+
+      // Promise.allSettled runs all the promises in parallel and returns an array of results after the longest promise is resolved
+      // we receive an array of objects with the status of each promise
+      // the catch block will not be executed
+      /*Promise.allSettled([waitFail(1000), wait(2000)])
+        .then(durations => console.log(durations))*/
+
+      /*Promise.race([waitFail(1000), wait(2000)])
+        .then(duration => console.log(duration))
+        .catch(e => console.error(e))*/
+
+      /*Promise.any([wait(1000), waitFail(2000), wait(3000)])
+        .then(duration => console.log(duration))
+        .catch(e => console.error("Promise.any", e))*/
+
+      fetch("https://jsonplaceholder.typicode.com/users/1")
+        .then(response => {
+          if(response.status === 200){
+            return response.text()
+          } else {
+            throw Error(response.statusText)
+          }
+        })
+        .then(jsonResponse => {
+          console.log(typeof jsonResponse, jsonResponse)
+          console.log(JSON.parse(jsonResponse))
+        })
+        .catch(e => console.error(e))
+      
+      console.log("Hello World!")
+      
   </script>
 </body>
 </html>
