@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="displayTime"></p>
+  <button>Get current time</button>
+  <script>
+    const d = new Date(1719915456752)
+    console.log(d.toLocaleString())
+
+    document.querySelector("button").addEventListener("click", () => {
+      const now = new Date()
+      document.querySelector("#displayTime").textContent = currTime.toTimeString()
+    })
+  </script>
+</body>
+</html>
