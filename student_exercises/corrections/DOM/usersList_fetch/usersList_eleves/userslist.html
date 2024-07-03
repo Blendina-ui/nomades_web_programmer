@@ -38,6 +38,7 @@
           <div class="row">
             <div class="col-12">
               <h1>Users</h1>
+              <p>Loading...</p>
             </div>
           </div>
           <div class="row g-2" id="row-users">
@@ -61,6 +62,8 @@
       const rowUsers = document.querySelector("#row-users")
       const userSearch = document.querySelector("#user-search")
       const userSearchBtn = document.querySelector("#user-search-btn")
+      const loadingText = document.querySelector("h1 + p")
+      loadingText.style.visibility = "hidden"
 
       // Main logic
       const getUsers = async () => {
@@ -95,9 +98,25 @@
       // Event definitions
       userSearchBtn.addEventListener("click", e => {
         const searchValue = userSearch.value.toLowerCase()
-        const foundUsers = search(searchValue)
+        
+        loadingText.style.visibility = "visible"
         rowUsers.textContent = ""
-        displayUsers(foundUsers)
+
+        fetch('https://jsonplaceholder.typicode.com/users')
+          .then(async response => {
+            users = await response.json()
+            const foundUsers = search(searchValue, users)
+            displayUsers(foundUsers, rowUsers)
+          })
+          .catch(e => {
+            const errorBox = document.createElement("div")
+            errorBox.classList.add("alert", "alert-danger")
+            errorBox.textContent = e
+
+            rowUsers.appendChild(errorBox)
+          })
+          .finally(() => { loadingText.style.visibility = "hidden" })
+        console.log("Hello")
       })
     </script>
   </body>

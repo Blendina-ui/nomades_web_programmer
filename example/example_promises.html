@@ -64,7 +64,7 @@
         loadding = false
       })*/
           
-      /*async function main() {
+      async function main() {
         console.log(3)
         await wait(1000)
         console.log(2)
@@ -73,7 +73,8 @@
         await wait(1000)
         console.log("Redirected")
       }
-      main()*/
+
+      console.log(main())
       /*
       const a = 10
       const b = 0
@@ -110,7 +111,7 @@
         .then(duration => console.log(duration))
         .catch(e => console.error("Promise.any", e))*/
 
-      fetch("https://jsonplaceholder.typicode.com/users/1")
+      /*fetch("https://jsonplaceholder.typicode.com/users/1")
         .then(response => {
           if(response.status === 200){
             return response.text()
@@ -124,7 +125,32 @@
         })
         .catch(e => console.error(e))
       
-      console.log("Hello World!")
+      console.log("Hello World!")*/
+
+      /*fetch("https://jsonplaceholder.typicode.com/users/")
+        .then(response => response.json())
+        .then(j => {
+          console.log(j)
+        })
+      
+      const p = new Promise((resovle, reject) => {
+        resovle(34)
+      })
+
+      p.then(number => {
+        console.log(number)
+        return 28
+      })
+      .then(number2 => console.log(number2))
+
+
+      function hello(world) {
+        if(world.length > 5)
+          console.log(world)
+      }
+
+      hello("coucou")
+      hello("salut")*/
       
   </script>
 </body>

@@ -125,7 +125,7 @@ const search = (searchStr, users) => {
   const [searchKey, searchValue] = searchStr.split(':')
   // const searchKey = searchStr.split(':')[0]
   // const searchValue = searchStr.split(':')[1]
-  users.filter(user => user[searchKey].includes())
+  // users.filter(user => user[searchKey].includes())
   switch(searchKey) {
     case 'id':
       // for(let i=0; i<users.length; i++){

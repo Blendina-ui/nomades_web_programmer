@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const g = {
+      name: "Gabriel",
+      lastname: "Menezes",
+
+    }
+
+    class Student {
+      courseId = "wpr_2024_0607"
+      #notes = [4]
+      
+      constructor(name, lastname) {
+        this.name = name
+        this.lastname = lastname
+      }
+
+      set notes(notes) {
+        if (Array.isArray(notes))
+          this.#notes = notes
+      }
+
+      get mean(){
+        return this.#notes.reduce((pv, cv) => pv+cv, 0) / this.#notes.length
+      }
+
+      canPass() {
+        return this.mean >= 4
+      }
+
+      greet() {
+        return `${this.name} wishes you a beautiful day !`
+      }
+    }
+
+    class ExcellentStudent extends Student {
+
+      constructor(name, lastname, skils) {
+        super(name, lastname)
+        this._skils = skils || ["sing"]
+      }
+      canPass() { // method overloading
+        return true
+      }
+
+      get skils() {
+        return this._skils
+      }
+
+      greet() {
+        return `${super.greet()} from an Excellent Student !`
+      }
+    }
+
+    const gabriel = new Student("Gabriel", "Menezes")
+    const thomas = new ExcellentStudent("Thomas", "Papas")
+
+    gabriel.notes = [4,5,6]
+    gabriel.notes = 2
+
+    console.log(gabriel.notes)
+    thomas.changeNotes()
+    console.log(thomas)
+    //console.log(gabriel.canPass())
+
+    console.log(gabriel.greet())
+    console.log(thomas.greet())
+
+    console.log(thomas instanceof Student)
+
+    class animal{}
+    class dog extends animal{}
+
+    class person{}
+
+    // les trois pillliers de la POO
+    // 1. l'héritage
+    // 2. l'encapsulation
+    // 3. le polymorphisme
+
+    class Point {
+      static nbPoint = 0
+      #x = 0
+      #y = 0
+      constructor(x, y){
+        this.x = x
+        this.y = y
+
+        Point.nbPoint++
+      }
+
+      set x(v) {
+        if(v < 0) throw new Error("X must be positive")
+        this.#x = v
+      }
+
+      set y(v) {
+        if(v < 0) throw new Error("Y must be positive")
+        this.#y = v
+      }
+
+      get x(){ return this.#x }
+      get y(){ return this.#y }
+
+      static distanceBetween(p1, p2) {
+        return ((p1.x-p2.x)**2+(p1.y-p2.y)**2)**(1/2) 
+      }
+    }
+
+    const p1 = new Point(10, 12)
+    const p2 = new Point(1, 2)
+    const p3 = new Point(34, 61)
+
+    p1.x = 1000
+    console.log(p1)
+
+    console.log(Point.distanceBetween({x:0, y:0}, p2))
+    console.log(Point.distanceBetween(p1, p3))
+    console.log(Point.distanceBetween(p2, p3))
+
+    console.log(Point.nbPoint)
+  </script>
+</body>
+</html>
