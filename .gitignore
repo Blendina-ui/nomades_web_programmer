@@ -4,12 +4,13 @@
 # course slides
 arrayFunctions.pdf
 
+example/
+
 # exercises
 student_exercises/corrections/basics/affichageNombres/
 student_exercises/corrections/*.js
 student_exercises/corrections/advanced/
 
-student_exercises/corrections/DOM/snake/
 student_exercises/corrections/DOM/*.zip
 
 student_exercises/implementations/DOM/*.zip
