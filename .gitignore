@@ -4,7 +4,7 @@
 # course slides
 arrayFunctions.pdf
 
-example/
+./example/
 
 # exercises
 student_exercises/corrections/basics/affichageNombres/
