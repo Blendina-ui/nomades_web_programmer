@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css' integrity='sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==' crossorigin='anonymous'/>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.js' integrity='sha512-lsA4IzLaXH0A+uH6JQTuz6DbhqxmVygrWv1CpC/s5vGyMqlnP0y+RYt65vKxbaVq+H6OzbbRtxzf+Zbj20alGw==' crossorigin='anonymous' defer></script>
+</head>
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>Authentication</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <button id="signin-google">Sign in with google</button>
+          <button id="signout">Signout</button>
+        </div>
+      </div>
+    </div>
+
+    
+    <script type="module" defer>
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+      import { 
+        getAuth,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        signOut,
+        onAuthStateChanged,
+        GoogleAuthProvider,
+        signInWithPopup
+      } from 'https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js'
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBydQV0iBbtac_jaBgq5ISXsSmEeFExzXs",
+        authDomain: "wpr-2024-0607.firebaseapp.com",
+        projectId: "wpr-2024-0607",
+        storageBucket: "wpr-2024-0607.appspot.com",
+        messagingSenderId: "1003928138896",
+        appId: "1:1003928138896:web:099d836d20fc7396bd5415"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app)
+      const googleProvider = new GoogleAuthProvider()
+
+      document.querySelector("#signout").addEventListener("click", e => {
+        const user = auth.currentUser
+        console.log(`user with id ${user.uid} will be signed out`)
+        signOut(auth)
+      })
+
+      document.querySelector("#signin-google").addEventListener("click", async e => {
+        const result = await signInWithPopup(auth, googleProvider)
+        const user = result.user
+        console.log(user)
+        console.log("signed in using google")
+      })
+      
+      /*signInWithEmailAndPassword(auth, "momo@gmail.com", "1234567890")
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user)
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(error)
+      });*/
+      onAuthStateChanged(auth, user => {
+        if(user) {
+          document.querySelector("#signout").style.visibility = "visible"
+          console.log("Signed in as " + user.uid)
+        } else {
+          document.querySelector("#signout").style.visibility = "hidden"
+          console.log("Signed out")
+          }
+        })
+/*
+      const signup = `<div class="card-header">
+            Sign Up
+          </div>
+          <div class="card-body">
+            <form id="signup-form">
+              <div class="mb-3">
+                <label for="signup-email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="signup-email" aria-describedby="emailHelp" autocomplete="email">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+              <div class="mb-3">
+                <label for="signup-password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="signup-password" autocomplete="new-password">
+              </div>
+              <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+          </div>
+          <div class="card-footer">
+            <button id="login" class="btn btn-secondary">Login</button>
+          </div>`
+      
+      const login = `<div class="card-header">
+            Login
+          </div>
+          <div class="card-body">
+            <form id="signup-form">
+              <div class="mb-3">
+                <label for="signup-email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="signup-email" aria-describedby="emailHelp" autocomplete="email">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+              <div class="mb-3">
+                <label for="signup-password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="signup-password" autocomplete="new-password">
+              </div>
+              <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+          </div>
+          <div class="card-footer">
+            <button id="signup" class="btn btn-secondary">Sign Up</button>
+          </div>`
+
+      const loggedIn = `<div class="card-header">
+            Logged In
+          </div>
+          <div class="card-body">
+            <button id="signout" class="btn btn-danger">Sign Out</button>
+          </div>`
+
+      const authContainer = document.querySelector('.card')
+
+      const signi_register = async (e) => {
+        e.preventDefault()
+        const email = document.getElementById('signup-email').value
+        const password = document.getElementById('signup-password').value
+        if (!email || !password) {
+          return
+        }
+
+        if (authContainer.innerHTML === login) {
+          try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password) 
+            console.log(userCredential)
+          } catch (error) {
+            console.error(error)
+          }
+        } else {
+          try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+            console.log(userCredential)
+          } catch (error) {
+            console.error(error)
+          }
+        }
+      }
+
+      /*onAuthStateChanged(auth, (user) => {
+        console.log(user)
+        if (user) {
+          authContainer.innerHTML = loggedIn
+          const signoutButton = document.getElementById('signout')
+          signoutButton.addEventListener('click', async () => {
+            try {
+              await signOut(auth)
+            } catch (error) {
+              console.error(error)
+            }
+          })
+        } else {
+          authContainer.innerHTML = login
+          const signupButton = document.getElementById('signup')
+          signupButton.addEventListener('click', () => {
+            const signupForm = document.getElementById('signup-form')
+            authContainer.innerHTML = signup
+            signupForm.addEventListener('submit', signi_register)
+
+
+            const loginButton = document.getElementById('login')
+            loginButton.addEventListener('click', () => {
+              const signupForm = document.getElementById('signup-form')
+              authContainer.innerHTML = login
+              signupForm.addEventListener('submit', signi_register)
+            })
+          })
+        }
+      })*/
+
+      /*
+      document.querySelector("#signup").addEventListener("click", async e => {
+        const email = document.getElementById('signup-email').value
+        const password = document.getElementById('signup-password').value
+        console.log("signup clicked")
+        try {
+          const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+          console.log(userCredential)
+        } catch (error) {
+          console.error(error)
+        }
+      })
+
+      onAuthStateChanged(auth, user => {
+        console.log(user)
+        if(user) {
+          console.log("Logged in")
+        } else {
+          console.log("logout")
+        }
+      })
+        */
+    </script>
+</body>
+</html>
