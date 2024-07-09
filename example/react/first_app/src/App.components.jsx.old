@@ -1,0 +1,24 @@
+function App() {
+  const todos = ['learn react', 'use JSX', 'Create a component', 'Build an app']
+  const showTitle = false
+  const defaultText = "Bonjour le Monde!"
+  const text = null || defaultText
+
+  return <>
+    <Title color="red" id="myTitle" className="bootstrap-title">{text}</Title>
+    <Title color="green" id="myTitle" className="bootstrap-title">Antonio Pisanello</Title>
+    <ul>
+      {todos.map((todo, index) => <li key={index}>{todo}</li>)}
+    </ul>
+  </>
+}
+
+function Title({ color, hidden, ...props }) {
+  if(hidden) return null
+
+  const handleClick = e => {alert("H1 clicked component")}
+  console.log(props)
+  return <h1 style={{color: color}} onClick={handleClick} {...props}></h1>
+}
+
+export default App
