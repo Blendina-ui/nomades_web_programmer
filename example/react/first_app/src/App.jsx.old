@@ -1,0 +1,52 @@
+function App() {
+  const title = "Hello World!"
+  const classes = "bootstrap-title bootstrap-title-2"
+
+  const style = {
+    color: 'red',
+    fontSize: '20px'
+  }
+
+  const handleClick = (e) => {
+    console.log(e)
+    alert("H1 clicked")
+  }
+
+  let t=false
+  const showTitle = false
+
+  const languages = ["C", "Java", "Python", "JavaScript", "Ruby", "Go", "Rust", "TypeScript", "Dart", "Kotlin"]
+
+  const li_languages = []
+  for(let i=0; i<languages.length; i++){
+    li_languages.push(<li>{languages[i]}</li>)
+  }
+
+  let displayText = null
+
+  if(showTitle){
+    displayText = <h1 id="title" className={t ? "bootstrap-title" : ""} style={style} onClick={handleClick} >{ title }</h1>
+  } else {
+    displayText = <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, perspiciatis earum quisquam iusto aliquam labore doloribus magnam qui nobis eaque accusamus natus assumenda, exercitationem reiciendis, deleniti iste quaerat inventore obcaecati?</p>
+  }
+
+  return <>
+      { displayText }
+      { showTitle
+        ? <h1 id="title" className={t ? "bootstrap-title" : ""} style={style} onClick={handleClick} >{ title }</h1> 
+        : <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, perspiciatis earum quisquam iusto aliquam labore doloribus magnam qui nobis eaque accusamus natus assumenda, exercitationem reiciendis, deleniti iste quaerat inventore obcaecati?</p> 
+      }
+      <input type="text" placeholder="Enter your name" />
+
+      <ul>
+        { li_languages }
+      </ul>
+
+      <ol>
+        { languages.map((l, i) => <li key={i}>{l}</li>) }
+      </ol>
+    </>
+    
+}
+
+export default App
