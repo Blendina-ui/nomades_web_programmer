@@ -4,6 +4,11 @@
 # course slides
 arrayFunctions.pdf
 
+# jupyter checkpoints
+.ipynb_checkpoints/
+
+example/firebase/stepper/
+
 ./example/
 
 # exercises
